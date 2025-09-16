@@ -157,9 +157,9 @@ export const Header: FC<HeaderProps> = ({ isHome = false }) => {
             <a
               href="/"
               className={styles.logoLink}
-              aria-label="ホームページに戻る"
+              aria-label="株式会社ノベルティ ホームページ"
             >
-              <img src="/images/logo.webp" alt="Novelty" />
+              <img src="/images/logo.webp" alt="株式会社ノベルティ" />
             </a>
           </h1>
           <div className={styles.headerContent}>
