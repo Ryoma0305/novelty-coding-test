@@ -1,0 +1,112 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.chanceSection {
+  position: relative;
+  padding-bottom: var(--spacing-8xl);
+
+  @include mq(md) {
+    padding-bottom: var(--spacing-9xl);
+  }
+
+  .btnArrowContainer {
+    padding: 0 var(--spacing-2xl);
+
+    @include mq(md) {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .btnArrow {
+    padding: var(--spacing-30) var(--spacing-2xl);
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+
+  @include mqMax(md) {
+    padding: 0;
+  }
+
+  @include mq(md) {
+    max-width: calc(1100 * var(--rem));
+  }
+}
+
+.chanceSectionContent {
+  order: 3;
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: 52% 36%;
+    gap: 7.5%;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: calc(44 * var(--rem));
+    padding: 0 0 0 var(--spacing-4xl);
+  }
+}
+
+.chanceSectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1.75;
+  width: 100%;
+  padding: var(--spacing-xl) var(--spacing-xl) 0;
+  order: 2;
+  margin-top: calc(-64 * var(--rem));
+  padding: var(--spacing-xl) var(--spacing-2xl) 0;
+  max-width: 94%;
+  background: $color-bg-base;
+
+  @include mq(md) {
+    font-size: var(--font-size-3xl);
+    padding: var(--spacing-2xl) var(--spacing-4xl) 0;
+    margin-top: calc(-78 * var(--rem));
+    max-width: 58%;
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.chanceSectionText {
+  margin-top: calc(28 * var(--rem));
+  margin-bottom: var(--spacing-4xl);
+  order: 3;
+  padding: 0 var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  line-height: 2;
+
+  @include mq(md) {
+    font-size: var(--font-size-base);
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    display: block;
+  }
+}
+
+.chanceSectionImage {
+  order: 1;
+
+  @include mq(md) {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+}
+
+.btnArrowContainer {
+  order: 4;
+  padding: 0 var(--spacing-2xl);
+}

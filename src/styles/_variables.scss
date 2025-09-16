@@ -1,0 +1,95 @@
+/*
+==========================================================================
+Variables - プロジェクト全体で使用する変数
+==========================================================================
+*/
+
+/* ==========================================================================
+   Colors
+   ========================================================================== */
+$color-primary: #3730ff;
+$color-primary-dark: #1e3a8a;
+$color-primary-light: #a5b4fc;
+$color-white: #ffffff;
+$color-black: #333;
+$color-gray-200: #e2e8f0;
+$color-gray-500: #64748b;
+$color-gray-600: #475569;
+$color-gray-700: #334155;
+
+// Background Colors
+$color-bg-base: #ebebeb;
+$color-bg-black: $color-black;
+$color-bg-primary: $color-white;
+$color-bg-secondary: #f1f5f9;
+
+// Text Colors
+$color-text-primary: $color-primary;
+$color-text-muted: #64748b;
+
+// Border Colors
+$color-border-dark: #334155;
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+// Font Families
+$font-family-primary: 'Zen Kaku Gothic New', sans-serif;
+$font-family-secondary: 'Archivo', sans-serif;
+
+// Font Weights
+$font-weight-medium: 500;
+
+// Font Sizes
+$font-size-base: 1rem; // 16px
+
+/* ==========================================================================
+   Breakpoints
+   ========================================================================== */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+$container-max-width: 1150px;
+$container-padding: 24px;
+
+// Header
+$header-height: 80px;
+$header-height-mobile: 60px;
+
+// Border Radius
+$border-radius-lg: 8px;
+
+/* ==========================================================================
+   Transitions
+   ========================================================================== */
+$transition-base: 0.3s ease;
+
+/* ==========================================================================
+   Shadows
+   ========================================================================== */
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+/* ==========================================================================
+   Focus Styles for Accessibility
+   ========================================================================== */
+$focus-outline-color: #fb0;
+$focus-outline-width: 2px;
+$focus-outline-offset: 2px;
+
+/* ==========================================================================
+   Alpha Color Function
+   ========================================================================== */
+@function alpha-color($color, $alpha) {
+  @return rgba($color, $alpha);
+}

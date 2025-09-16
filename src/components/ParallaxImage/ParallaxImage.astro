@@ -1,0 +1,13 @@
+---
+import styles from './ParallaxImage.module.scss';
+---
+
+<section class={styles.parallaxImage}>
+  <picture>
+    <source
+      srcset="/public/images/parallax-image-pc.webp"
+      media="(min-width:768px)"
+    />
+    <img src="/public/images/parallax-image.webp" alt="" />
+  </picture>
+</section>

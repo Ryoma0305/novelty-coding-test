@@ -1,0 +1,170 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+/*
+==========================================================================
+Arrow Button Component - 矢印付きボタンコンポーネント
+==========================================================================
+*/
+
+/* Base button styles */
+.btnArrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2xl);
+  text-decoration: none;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  font-family: $font-family-primary;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: var(--spacing-14) var(--spacing-2xl);
+  position: relative;
+  overflow: hidden;
+
+  @include focusVisible;
+
+  @include mq(md) {
+    padding: var(--spacing-14) var(--spacing-28);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* Primary variant */
+.btnArrowPrimary {
+  background: $color-primary;
+  color: $color-white;
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-white;
+      color: $color-primary;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
+    }
+  }
+}
+
+/* Secondary variant */
+.btnArrowSecondary {
+  background: $color-white;
+  color: $color-primary;
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-primary;
+      color: $color-white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
+    }
+  }
+}
+
+/* Outline dark variant */
+.btnArrowOutlineDark {
+  background: $color-bg-black;
+  border: 1px solid $color-white;
+  color: $color-white;
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-white;
+      color: $color-bg-black;
+      border-color: $color-white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-white, 0.3);
+    }
+  }
+}
+
+/* Primary variant with border-radius */
+.btnArrowPrimaryRounded {
+  padding: var(--spacing-14) var(--spacing-2xl);
+  background: var(--color-primary);
+  border: solid 2px var(--color-white);
+  border-radius: 32px;
+  color: var(--color-white);
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-white;
+      color: $color-primary;
+      border-color: $color-primary;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
+    }
+  }
+}
+
+/* Secondary variant with border-radius */
+.btnArrowSecondaryRounded {
+  padding: var(--spacing-14) var(--spacing-2xl);
+  background: var(--color-white);
+  border: solid 2px var(--color-white);
+  border-radius: 32px;
+  color: var(--color-primary);
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
+    }
+  }
+}
+
+/* Outline dark variant with border-radius */
+.btnArrowOutlineDarkRounded {
+  padding: var(--spacing-14) var(--spacing-2xl);
+  background: var(--color-bg-black);
+  border: solid 1px var(--color-white);
+  border-radius: 32px;
+  color: var(--color-white);
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background: $color-white;
+      color: $color-bg-black;
+      border-color: $color-white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-white, 0.3);
+    }
+  }
+}
+
+/* Small size variant */
+.btnArrowSmall {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-10) var(--spacing-2xl);
+}
+
+/* Large size variant */
+.btnArrowLarge {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+
+  @include mq(md) {
+    padding: var(--spacing-4xl) var(--spacing-2xl);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Icon styles */
+.btnArrowIcon {
+  width: var(--spacing-14);
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}

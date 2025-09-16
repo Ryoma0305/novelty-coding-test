@@ -1,0 +1,161 @@
+---
+import Button from '../Button/Button.astro';
+
+import styles from './Footer.module.scss';
+
+interface FooterLink {
+  href: string;
+  text: string;
+  size?: 'small';
+}
+
+const currentPath = Astro.url.pathname;
+
+const footerButtons = [
+  {
+    href: '#',
+    text: 'コーポレートサイト',
+  },
+  {
+    href: '#',
+    text: 'ノベルティ公式X',
+  },
+];
+
+const footerNavColumns: { title?: string; links: FooterLink[] }[] = [
+  {
+    title: '',
+    links: [
+      { href: '/', text: 'ホーム' },
+      { href: '#', text: 'ノベルティについて' },
+      { href: '#', text: 'ノベルティのカルチャー' },
+      { href: '#', text: 'ストーリー' },
+      { href: '#', text: '数字でみるノベルティ' },
+    ],
+  },
+  {
+    links: [
+      { href: '#', text: '福利厚生・制度' },
+      { href: '#', text: 'ノベルティの日常' },
+      { href: '#', text: 'メンバー紹介', size: 'small' },
+      { href: '#', text: '最近のできごと', size: 'small' },
+      { href: '#', text: '福利厚生', size: 'small' },
+      { href: '#', text: '社内環境', size: 'small' },
+      { href: '#', text: 'レクリエーション', size: 'small' },
+    ],
+  },
+  {
+    links: [
+      { href: '#', text: 'カジュアル面談' },
+      { href: '#', text: '募集要項' },
+      { href: '#', text: 'エントリー' },
+    ],
+  },
+];
+
+const infoLinks = [
+  {
+    href: '#',
+    text: '会社情報',
+  },
+  {
+    href: '#',
+    text: 'プライバシーポリシー',
+  },
+  {
+    href: '#',
+    text: 'サイトマップ',
+  },
+];
+---
+
+<footer class={styles.footer}>
+  <div class={styles.goTop}>
+    <a href="#top" class={styles.goTopLink} aria-label="ページ上部に戻る">
+      <svg
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M9.5 14.876L4.5 9.87598M4.5 9.87598L9.5 4.87598M4.5 9.87598H15C15.7223 9.87598 16.4375 10.0182 17.1048 10.2946C17.772 10.571 18.3784 10.9762 18.8891 11.4869C19.3998 11.9976 19.8049 12.6039 20.0813 13.2712C20.3577 13.9385 20.5 14.6537 20.5 15.376C20.5 16.0982 20.3577 16.8134 20.0813 17.4807C19.8049 18.148 19.3998 18.7543 18.8891 19.2651C18.3784 19.7758 17.772 20.1809 17.1048 20.4573C16.4375 20.7337 15.7223 20.876 15 20.876H11.5"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      <span class="sr-only">ページ上部に戻る</span>
+      <span aria-hidden="true">Back to top</span>
+    </a>
+  </div>
+  <div class={styles.container}>
+    <div class={styles.footerContent}>
+      <div class={styles.footerHeaderSection}>
+        <div class={styles.footerLogoSection}>
+          <div class={styles.footerLogo}>
+            <img src="/images/logo02.webp" alt="Novelty" />
+          </div>
+        </div>
+        <div class={styles.footerBtnSection}>
+          {
+            footerButtons.map(button => (
+              <Button
+                href={button.href}
+                variant="outline-dark"
+                rounded={true}
+                size="small"
+              >
+                {button.text}
+              </Button>
+            ))
+          }
+        </div>
+      </div>
+      <div class={styles.footerNavSection}>
+        <nav class={styles.footerNav} aria-label="フッターナビゲーション">
+          <div class={styles.footerNavColumns}>
+            {
+              footerNavColumns.map(column => (
+                <div class={styles.footerNavColumn}>
+                  <ul class={styles.footerNavList}>
+                    {column.links.map(link => (
+                      <li
+                        class={`${styles.footerNavItem}${link.size === 'small' ? ` ${styles.isSmall}` : ''}${currentPath === link.href ? ` ${styles.current}` : ''}`}
+                      >
+                        <a href={link.href} class={styles.footerNavLink}>
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class={styles.footerInfoSection}>
+      <ul class={styles.footerInfoList}>
+        {
+          infoLinks.map(link => (
+            <li class={styles.footerInfoItem}>
+              <a href={link.href} class={styles.footerInfoLink}>
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class={styles.footerCopyright}>
+        <small
+          >Copyright
+          千葉県船橋市のホームページ制作・マーケティングの株式会社ノベルティ</small
+        >
+      </p>
+    </div>
+  </div>
+</footer>

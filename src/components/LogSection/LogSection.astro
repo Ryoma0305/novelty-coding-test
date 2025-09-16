@@ -1,0 +1,103 @@
+---
+import Button from '../Button/Button.astro';
+import styles from './LogSection.module.scss';
+
+export interface LogPost {
+  id: string;
+  title: string;
+  publishedAt: string;
+  category?: {
+    name: string;
+  };
+  eyecatch?: {
+    url: string;
+    width: number;
+    height: number;
+  };
+}
+
+export interface Props {
+  posts: LogPost[];
+  formatDate: (dateString: string) => string;
+}
+
+const { posts, formatDate } = Astro.props;
+---
+
+<section class={styles.logSection}>
+  <div class={styles.logSectionContent}>
+    <div class={styles.container}>
+      <div class={styles.logSectionTitleGroupContainer}>
+        <hgroup class={styles.logSectionTitleGroup}>
+          <h2 class={styles.logSectionTitle}>Novelty log</h2>
+          <p class={styles.logSectionText}>ノベルティログ</p>
+        </hgroup>
+      </div>
+      <p class={styles.logText}>
+        ノベルティの日常から年に数回のレクリエーション、福利厚生や制度の利用についてなど社内の様子を毎月発信しています。
+      </p>
+    </div>
+  </div>
+  <div class={styles.logListContainer}>
+    <ul class={styles.logList}>
+      {
+        posts.map(item => (
+          <li class={styles.logItem}>
+            <article class={styles.logItemArticle}>
+              <a
+                href={`/blog/${item.id}`}
+                class={styles.logItemLink}
+                aria-label={`記事「${item.title}」を読む`}
+              >
+                <div class={styles.logItemTitleGroup}>
+                  <h3 class={styles.logItemTitle}>{item.title}</h3>
+                  <div class={styles.logItemDateGroup}>
+                    <time
+                      class={styles.logItemDate}
+                      datetime={item.publishedAt}
+                      aria-label={`公開日: ${formatDate(item.publishedAt)}`}
+                    >
+                      {formatDate(item.publishedAt)}
+                    </time>
+                    <p
+                      class={styles.logItemCategory}
+                      aria-label={`カテゴリー: ${item.category?.name || 'カテゴリーなし'}`}
+                    >
+                      {item.category?.name || 'カテゴリーなし'}
+                    </p>
+                  </div>
+                </div>
+                <div class={styles.logItemImageContainer}>
+                  <div class={styles.logItemImage}>
+                    <img
+                      src={
+                        item.eyecatch?.url ||
+                        'https://placehold.jp/325x216.webp'
+                      }
+                      alt={
+                        item.eyecatch?.url
+                          ? `${item.title}のアイキャッチ画像`
+                          : 'デフォルト画像'
+                      }
+                      width={item.eyecatch?.width || 325}
+                      height={item.eyecatch?.height || 216}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class={styles.btnArrowContainer}>
+    <p class={styles.btnArrowWrapper}>
+      <Button href="#" variant="primary" size="large"
+        >採用ブログ一覧をみる</Button
+      >
+    </p>
+  </div>
+</section>

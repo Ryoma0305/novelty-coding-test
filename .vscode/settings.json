@@ -1,0 +1,45 @@
+{
+  // TSXファイルでEmmetを有効化
+  "emmet.includeLanguages": {
+    "typescriptreact": "html",
+    "javascript": "html"
+  },
+
+  // TSXファイルでHTMLの補完を有効化
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.showSuggestionsAsSnippets": true,
+
+  // TypeScript React用の設定
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.includeCompletionsForModuleExports": true,
+
+  // HTMLタグの自動補完を有効化
+  "html.suggest.html5": true,
+  "html.autoClosingTags": true,
+
+  // JSX/TSXでのHTMLタグ補完
+  "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+
+  // Auto Closing Tags設定
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (Eex)"
+  ]
+}

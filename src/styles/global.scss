@@ -1,0 +1,304 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@import 'modern-normalize';
+
+/*
+==========================================================================
+Global Styles
+==========================================================================
+*/
+
+/* ==========================================================================
+   CSS Custom Properties (Variables)
+   ========================================================================== */
+:root {
+  /* Base rem calculation */
+  --rem: calc(1rem / 16); /* ベースのフォントサイズが16pxの場合 */
+
+  /* Colors */
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-primary-light: #{$color-primary-light};
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+  --color-gray-200: #{$color-gray-200};
+  --color-gray-500: #{$color-gray-500};
+  --color-gray-600: #{$color-gray-600};
+  --color-gray-700: #{$color-gray-700};
+
+  /* Background Colors */
+  --color-bg-base: #{$color-bg-base};
+  --color-bg-black: #{$color-bg-black};
+  --color-bg-primary: #{$color-bg-primary};
+  --color-bg-secondary: #{$color-bg-secondary};
+
+  /* Text Colors */
+  --color-text-primary: #{$color-text-primary};
+  --color-text-muted: #{$color-text-muted};
+
+  /* Border Colors */
+  --color-border-dark: #{$color-border-dark};
+
+  /* Typography */
+  --font-family-primary: #{$font-family-primary};
+  --font-family-secondary: #{$font-family-secondary};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-size-base: #{$font-size-base};
+
+  /* Font Sizes */
+  --font-size-xs: calc(12 * var(--rem)); /* 12px - Extra Small */
+  --font-size-sm: calc(14 * var(--rem)); /* 14px - Small */
+  --font-size-base: calc(16 * var(--rem)); /* 16px - Base */
+  --font-size-md: calc(18 * var(--rem)); /* 18px - Medium */
+  --font-size-lg: calc(20 * var(--rem)); /* 20px - Large */
+  --font-size-xl: calc(24 * var(--rem)); /* 24px - Extra Large */
+  --font-size-2xl: calc(32 * var(--rem)); /* 32px - 2X Large */
+  --font-size-3xl: calc(40 * var(--rem)); /* 40px - 3X Large */
+  --font-size-4xl: calc(48 * var(--rem)); /* 48px - 4X Large */
+  --font-size-5xl: calc(64 * var(--rem)); /* 64px - 5X Large */
+  --font-size-6xl: calc(80 * var(--rem)); /* 80px - 6X Large */
+  --font-size-7xl: calc(128 * var(--rem)); /* 128px - 7X Large */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-xs: 2px; /* 2px - Extra Small */
+  --spacing-sm: 4px; /* 4px - Small */
+  --spacing-md: 8px; /* 8px - Medium */
+  --spacing-lg: 12px; /* 12px - Large */
+  --spacing-xl: 16px; /* 16px - Extra Large */
+  --spacing-2xl: 24px; /* 24px - 2X Large */
+  --spacing-3xl: 32px; /* 32px - 3X Large */
+  --spacing-4xl: 40px; /* 40px - 4X Large */
+  --spacing-5xl: 48px; /* 48px - 5X Large */
+  --spacing-6xl: 64px; /* 64px - 6X Large */
+  --spacing-7xl: 80px; /* 80px - 7X Large */
+  --spacing-8xl: 120px; /* 120px - 8X Large */
+  --spacing-9xl: 160px; /* 160px - 9X Large */
+
+  /* Special spacing values */
+  --spacing-6: 6px; /* 6px - Special case */
+  --spacing-10: 10px; /* 10px - Special case */
+  --spacing-14: 14px; /* 14px - Special case */
+  --spacing-20: 20px; /* 20px - Special case */
+  --spacing-28: 28px; /* 28px - Special case */
+  --spacing-30: 30px; /* 30px - Special case */
+  --spacing-56: 56px; /* 56px - Special case */
+
+  /* Layout */
+  --container-max-width: #{$container-max-width};
+  --container-padding: calc(24 * var(--rem));
+  --header-height: #{$header-height};
+  --header-height-mobile: #{$header-height-mobile};
+  --border-radius-lg: #{$border-radius-lg};
+
+  /* Transitions */
+  --transition-base: #{$transition-base};
+
+  /* Shadows */
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  /* Focus Styles */
+  --focus-outline-color: #{$focus-outline-color};
+  --focus-outline-width: #{$focus-outline-width};
+  --focus-outline-offset: #{$focus-outline-offset};
+}
+
+/* ==========================================================================
+   Base Styles & Modern CSS Reset
+   ========================================================================== */
+
+// Remove default margin from all elements (already handled by modern-normalize for most elements)
+// Adding specific elements that might need it
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+ol,
+ul {
+  margin: 0;
+}
+
+// Remove list styling when using role="list" (accessibility best practice)
+ol[role='list'],
+ul[role='list'] {
+  list-style: none;
+  padding-inline: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+// Reset heading typography for design flexibility
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  font-family: $font-family-primary;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
+  font-family: $font-family-primary;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $color-bg-base;
+}
+
+// Responsive media defaults
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Form elements inherit typography
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Prevent text overflow
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// Modern text wrapping (progressive enhancement)
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  @include focusVisible;
+}
+
+ul {
+  list-style: none;
+}
+
+span {
+  display: block;
+}
+
+/* ==========================================================================
+   Layout Adjustments for Fixed Header
+   ========================================================================== */
+main {
+  padding-top: $header-height-mobile;
+
+  @include mq(md) {
+    padding-top: $header-height;
+  }
+}
+
+/* ==========================================================================
+   Root Stacking Context (for JS frameworks)
+   ========================================================================== */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* ==========================================================================
+   Focus Management
+   ========================================================================== */
+// Remove default outline and use custom focus styles
+:focus {
+  outline: none;
+}
+
+// Apply focus-visible styles to interactive elements
+a,
+button,
+input,
+textarea,
+select,
+[tabindex]:not([tabindex='-1']) {
+  @include focusVisible;
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ==========================================================================
+   Accessibility Utilities
+   ========================================================================== */
+// Screen reader only text (visually hidden but accessible to screen readers)
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Skip link for keyboard navigation
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: $color-primary;
+  color: $color-white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 4px;
+  transition: top $transition-base;
+
+  &:focus {
+    top: 6px;
+  }
+}

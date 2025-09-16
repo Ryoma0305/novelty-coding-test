@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.chanceMessage {
+  padding: var(--spacing-7xl) 0;
+
+  @include mq(md) {
+    padding: var(--spacing-9xl) 0;
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+
+  @include mq(md) {
+    gap: var(--spacing-2xl);
+  }
+}
+
+.chanceImage {
+  width: var(--spacing-20);
+
+  @include mq(md) {
+    width: var(--spacing-3xl);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.chanceText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+
+  span {
+    display: block;
+
+    @include mq(md) {
+      display: inline;
+    }
+  }
+}

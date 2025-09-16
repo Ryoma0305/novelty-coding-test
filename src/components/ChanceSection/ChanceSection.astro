@@ -1,0 +1,40 @@
+---
+import Button from '../Button/Button.astro';
+import styles from './ChanceSection.module.scss';
+---
+
+<section class={styles.chanceSection}>
+  <div class={styles.container}>
+    <h2 class={styles.chanceSectionTitle}>
+      移り変わりの激しい
+      <span>ウェブの世界で</span>
+      <span>生きていける力を磨く</span>
+    </h2>
+    <div class={styles.chanceSectionContent}>
+      <p class={styles.chanceSectionText}>
+        私たちノベルティは、ワンストップサービスを強みとする制作会社です。マーケティング、デザイン、エンジニアリングの技術を駆使して、企業の課題解決や目標達成を支援しています。
+        <span>
+          そのために必要な知識、経験、技術を追求し、最高のサービスを提供できる強いチームづくりに取り組んでいます。
+        </span>
+        <span>
+          日々試行錯誤しながら、今日よりも明日の成長を目指して、ともに考え、進み続けることができる、そんな人が活躍できる場所です。
+        </span>
+      </p>
+
+      <p class={styles.btnArrowContainer}>
+        <Button href="#" variant="primary" size="large"
+          >ノベルティについて知る</Button
+        >
+      </p>
+    </div>
+    <span class={styles.chanceSectionImage}>
+      <picture>
+        <source
+          srcset="/public/images/image01-pc.webp"
+          media="(min-width:768px)"
+        />
+        <img src="/public/images/image01.webp" alt="" />
+      </picture>
+    </span>
+  </div>
+</section>

@@ -1,0 +1,174 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contactSection {
+  margin-top: -36px;
+
+  @include mq(md) {
+    margin-top: -56px;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.contactSectionTitle {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-top: var(--spacing-2xl);
+  color: var(--color-primary);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-5xl);
+  font-style: italic;
+  font-weight: var(--font-weight-normal);
+  line-height: normal;
+  text-transform: capitalize;
+
+  @include mq(md) {
+    font-size: var(--font-size-7xl);
+    align-items: flex-start;
+    margin-top: var(--spacing-4xl);
+    gap: var(--spacing-4xl);
+  }
+
+  span {
+    @include mq(md) {
+      display: block;
+    }
+  }
+}
+
+.contactSectionTitleText {
+  @include mq(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.contactSectionTitleTextSpan {
+  // Inline span styling
+}
+
+.contactSectionTitleImage {
+  flex-shrink: 0;
+  width: calc(38 * var(--rem));
+
+  @include mq(md) {
+    width: 6%;
+    padding-top: var(--spacing-10);
+  }
+}
+
+.contactSectionText {
+  color: var(--color-primary);
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.75;
+  margin-top: var(--spacing-4xl);
+
+  @include mq(md) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.contactSectionButtonGroup {
+  margin-top: var(--spacing-56);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+
+  @include mq(md) {
+    margin-top: var(--spacing-4xl);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(36 * var(--rem));
+    justify-content: center;
+  }
+}
+
+.contactSectionButton {
+  display: flex;
+  padding: var(--spacing-28) var(--spacing-20);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-4xl);
+  align-self: stretch;
+  border: 4px solid $color-primary;
+  background: $color-bg-base;
+  color: $color-primary;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  line-height: 1.75;
+  position: relative;
+  transition: $transition-base;
+  cursor: pointer;
+  text-decoration: none;
+
+  @include mq(md) {
+    padding: var(--spacing-56) var(--spacing-4xl);
+    font-size: var(--font-size-xl);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.3);
+
+      .contactItemIcon {
+        background: $color-white;
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.contactItemIcon {
+  display: flex;
+  height: var(--spacing-5xl);
+  width: var(--spacing-5xl);
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border-radius: 8px 0 0 0;
+  background: $color-primary;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $color-white;
+  transition: all 0.3s ease;
+}
+
+.btnArrowIcon {
+  width: 14px;
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.contactSectionImageContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+
+  @include mq(md) {
+    margin-top: var(--spacing-4xl);
+  }
+}
+
+.contactSectionImage {
+  max-width: 48%;
+
+  @include mq(md) {
+    max-width: 21.5%;
+  }
+}

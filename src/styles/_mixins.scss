@@ -1,0 +1,172 @@
+@use 'variables' as *;
+
+/*
+==========================================================================
+Mixins - 再利用可能なスタイルパターン
+==========================================================================
+*/
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@mixin mq($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+// Max-width media queries
+@mixin mqMax($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: #{$breakpoint-lg - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: #{$breakpoint-xl - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == 2xl {
+    @media (max-width: #{$breakpoint-2xl - 1px}) {
+      @content;
+    }
+  }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+// Focus styles for keyboard navigation
+@mixin focusVisible {
+  &:focus-visible {
+    outline: $focus-outline-width solid $focus-outline-color;
+    outline-offset: $focus-outline-offset;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+// Container
+@mixin container {
+  max-width: $container-max-width;
+  margin-inline: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+// Base button styles
+@mixin buttonBase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  @include focusVisible;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Button variants
+@mixin buttonPrimary {
+  @include buttonBase;
+  background-color: $color-primary;
+  color: $color-white;
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background-color: $color-primary-dark;
+    }
+  }
+}
+
+@mixin buttonSecondary {
+  @include buttonBase;
+  background-color: $color-bg-secondary;
+  color: $color-text-primary;
+
+  @media (any-hover: hover) {
+    &:hover:not(:disabled) {
+      background-color: $color-gray-200;
+    }
+  }
+}
+
+/* ==========================================================================
+   Text Link Hover Animation
+   ========================================================================== */
+
+// 統一されたテキストリンクのホバーアニメーション
+@mixin textLinkHover($underline-color: currentColor) {
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $underline-color;
+    transition: width 0.3s ease;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// 白いリンク用（フッターなど）
+@mixin textLinkHoverWhite {
+  @include textLinkHover($color-white);
+}
+
+// 一般的なリンク用
+@mixin textLinkHoverPrimary {
+  @include textLinkHover($color-primary);
+}

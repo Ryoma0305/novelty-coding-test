@@ -1,0 +1,5 @@
+name = "novelty"
+compatibility_date = "2024-01-15"
+
+[env.production]
+# Cloudflare Pagesの本番環境設定

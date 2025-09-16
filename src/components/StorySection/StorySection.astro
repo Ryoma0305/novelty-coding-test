@@ -1,0 +1,95 @@
+---
+import Button from '../Button/Button.astro';
+import styles from './StorySection.module.scss';
+
+export interface StoryItem {
+  title: string;
+  category: string;
+  imagePc: string;
+  imageSp: string;
+  isPickUp?: boolean;
+}
+
+export interface Props {
+  items: StoryItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class={styles.storySection}>
+  <div class={styles.container}>
+    <div class={styles.storySectionContent}>
+      <div class={styles.storySectionTitleGroupContainer}>
+        <hgroup class={styles.storySectionTitleGroup}>
+          <h2 class={styles.storySectionTitle}>Story</h2>
+          <p class={styles.storySectionText}>ストーリー</p>
+        </hgroup>
+        <span class={styles.storySectionImage}>
+          <picture>
+            <source
+              srcset="/public/images/bg-story-pc.webp"
+              media="(min-width:768px)"
+            />
+            <img src="/public/images/bg-story.webp" alt="" />
+          </picture>
+        </span>
+      </div>
+      <p class={styles.storyText}>
+        各職種の仕事内容やメンバーの働き方、チームの雰囲気について、ノベルティのリアルな姿をインタビューでお届けします。
+      </p>
+      <p class={styles.btnArrowContainer}>
+        <Button href="#" variant="primary" size="large"
+          >ストーリー一覧をみる</Button
+        >
+      </p>
+    </div>
+    <div class={styles.storyListContainer}>
+      <ul class={styles.storyList}>
+        {
+          items.map(item => (
+            <li class={styles.storyItem}>
+              <a href="#" class={styles.storyItemLink}>
+                <div class={styles.storyItemTitleGroup}>
+                  <h3 class={styles.storyItemTitle}>{item.title}</h3>
+                  <p class={styles.storyItemCategory}>{item.category}</p>
+                </div>
+                <div class={styles.storyItemImageContainer}>
+                  <div class={styles.storyItemImage}>
+                    <picture>
+                      <source srcset={item.imagePc} media="(min-width:768px)" />
+                      <img src={item.imageSp} alt={item.title} />
+                    </picture>
+                  </div>
+                  {item.isPickUp && (
+                    <span class={styles.storyItemPickUp}>Pick up!</span>
+                  )}
+                  <span class={styles.storyItemIcon}>
+                    <span class={styles.btnArrowIcon}>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2 1.95508H12M12 1.95508V11.9551M12 1.95508L2 11.9551"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

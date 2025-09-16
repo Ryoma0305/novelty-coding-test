@@ -1,0 +1,100 @@
+---
+import Button from '../Button/Button.astro';
+import styles from './CultureSection.module.scss';
+
+export interface CultureItem {
+  title: string;
+  text: string;
+  imagePc: string;
+  imageSp: string;
+}
+
+export interface Props {
+  items: CultureItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class={styles.cultureSection}>
+  <span class={styles.cultureBackgroundImage}>
+    <svg
+      width="155"
+      height="246"
+      viewBox="0 0 155 246"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M122.5 245.876L120.021 194.146L119.683 194.146C119.683 156.62 89.256 126.193 51.7306 126.193V125.858L0 123.376L51.7306 120.893V120.558C89.256 120.558 119.683 90.131 119.683 52.6056L120.021 52.6056L122.5 0.875743L124.986 52.6056L125.318 52.6056C125.318 90.131 155.745 120.558 193.271 120.558V120.893L245 123.376L193.271 125.858V126.193C155.745 126.193 125.318 156.62 125.318 194.146L124.986 194.146L122.5 245.876Z"
+        fill="#3730FF"></path>
+    </svg>
+  </span>
+  <div class={styles.container}>
+    <div class={styles.cultureSectionTitleGroupContainer}>
+      <hgroup class={styles.cultureSectionTitleGroup}>
+        <h2 class={styles.cultureSectionTitle}>Culture</h2>
+        <p class={styles.cultureSectionText}>ノベルティのカルチャー</p>
+      </hgroup>
+      <span class={styles.cultureSectionImage}>
+        <picture>
+          <source
+            srcset="/public/images/hand-pc.webp"
+            media="(min-width:768px)"
+          />
+          <img src="/public/images/hand.webp" alt="" />
+        </picture>
+      </span>
+    </div>
+    <p class={styles.cultureText}>
+      ノベルティが大切にする考え方やノベルティに
+      <span>マッチする人物像について掲載しています。</span>
+    </p>
+    <div class={styles.cultureListContainer}>
+      <ul class={styles.cultureList}>
+        {
+          items.map(item => (
+            <li class={styles.cultureItem}>
+              <p class={styles.cultureItemTitle}>
+                <span class={styles.cultureItemTitleIcon}>
+                  <svg
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 20.3757L4.02049 15.9505L3.99292 15.923C7.05622 12.8597 7.05622 7.89193 3.99292 4.82863L4.02027 4.80128L0 0.375732L4.42554 4.396L4.4529 4.36865C7.51619 7.43195 12.4839 7.43195 15.5472 4.36865L15.5748 4.39622L20 0.375732L15.9801 4.80152L16.0072 4.82863C12.9439 7.89193 12.9439 12.8597 16.0072 15.923L15.9799 15.9503L20 20.3757L15.5746 16.3556L15.5472 16.3829C12.4839 13.3196 7.51619 13.3196 4.4529 16.3829L4.42579 16.3558L0 20.3757Z"
+                      fill="#3730FF"
+                    />
+                  </svg>
+                </span>
+                Culture
+              </p>
+              <p class={styles.cultureItemText}>{item.title}</p>
+              <div class={styles.cultureItemImageContainer}>
+                <p class={styles.cultureItemImage}>
+                  <picture>
+                    <source srcset={item.imagePc} media="(min-width:768px)" />
+                    <img src={item.imageSp} alt={item.title} />
+                  </picture>
+                </p>
+                <p class={styles.cultureItemImageText}>{item.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <span class={styles.cultureListBackgroundImage}>
+        <img src="/public/images/image-star.webp" alt="" />
+      </span>
+    </div>
+    <p class={styles.btnArrowContainer}>
+      <Button href="#" variant="primary" size="large"
+        >ノベルティのカルチャーを知る</Button
+      >
+    </p>
+  </div>
+</section>

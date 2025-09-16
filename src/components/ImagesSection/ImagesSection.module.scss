@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.imagesSection {
+  display: flex;
+  align-items: flex-start;
+  padding-left: var(--spacing-2xl);
+  position: relative;
+
+  @include mq(md) {
+    padding-left: var(--spacing-4xl);
+    display: grid;
+    grid-template-columns: 60% 28%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.imagesSectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.imagesSectionBackgroundImage {
+  @include mqMax(md) {
+    width: 196px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  @include mq(md) {
+    width: 100%;
+    display: block;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.imagesSectionImage {
+  max-width: 56%;
+
+  @include mq(md) {
+    max-width: 100%;
+  }
+}

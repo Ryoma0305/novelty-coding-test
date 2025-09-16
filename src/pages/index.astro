@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getBlogPosts, type BlogPost } from '../utils/microcms';
+
+import HeroSection from '../components/HeroSection/HeroSection.astro';
+import ChanceMessageSection from '../components/ChanceMessageSection/ChanceMessageSection.astro';
+import ChanceSection from '../components/ChanceSection/ChanceSection.astro';
+import CultureSection from '../components/CultureSection/CultureSection.astro';
+import StorySection from '../components/StorySection/StorySection.astro';
+import LogSection from '../components/LogSection/LogSection.astro';
+import ImagesSection from '../components/ImagesSection/ImagesSection.astro';
+import EnvironmentSection from '../components/EnvironmentSection/EnvironmentSection.astro';
+import ParallaxImage from '../components/ParallaxImage/ParallaxImage.astro';
+import ContactSection from '../components/ContactSection/ContactSection.astro';
+
+const cultureItems = [
+  {
+    title: 'One-Team',
+    text: '視野を広げ チームで答えを導き出そう',
+    imagePc: '/public/images/culture-image01-pc.webp',
+    imageSp: '/public/images/culture-image01.webp',
+  },
+  {
+    title: 'Quality',
+    text: '現状に満足せず 品質とユーザビリティを追求しよう',
+    imagePc: '/public/images/culture-image02-pc.webp',
+    imageSp: '/public/images/culture-image02.webp',
+  },
+  {
+    title: 'Ownership',
+    text: '主体的に取り組み 責任を持って完遂しよう',
+    imagePc: '/public/images/culture-image03-pc.webp',
+    imageSp: '/public/images/culture-image03.webp',
+  },
+  {
+    title: 'Teamwork',
+    text: '個性を尊重し それぞれの活躍できる組織をつくろう',
+    imagePc: '/public/images/culture-image04-pc.webp',
+    imageSp: '/public/images/culture-image04.webp',
+  },
+];
+
+const storyItems = [
+  {
+    title: '"作る"だけのデザイナーから一歩先へ',
+    category: 'Designer',
+    imagePc: '/public/images/story-image01-pc.webp',
+    imageSp: '/public/images/story-image01.webp',
+    isPickUp: true,
+  },
+  {
+    title: '秘められた才能をノベルティで開花させませんか？',
+    category: 'Designer',
+    imagePc: '/public/images/story-image02-pc.webp',
+    imageSp: '/public/images/story-image02.webp',
+  },
+  {
+    title: 'バランスがよく、働きやすい環境です',
+    category: 'Designer',
+    imagePc: '/public/images/story-image03-pc.webp',
+    imageSp: '/public/images/story-image03.webp',
+  },
+];
+
+const environmentItems = [
+  {
+    title: '数字でみるノベルティ',
+    text: '社内の雰囲気やメンバーの働き方など、ノベルティを数字でご紹介します。',
+    imagePc: '/public/images/environment-image01-pc.webp',
+    imageSp: '/public/images/environment-image01.webp',
+    link: '#',
+  },
+  {
+    title: '福利厚生・制度',
+    text: '各種福利厚生や評価制度、ワークスタイルについてご紹介します。',
+    imagePc: '/public/images/environment-image02-pc.webp',
+    imageSp: '/public/images/environment-image02.webp',
+    link: '#',
+  },
+];
+
+let logPosts: BlogPost[] = [];
+try {
+  const response = await getBlogPosts(3);
+  logPosts = response.contents;
+} catch (error) {
+  console.error('microCMS接続エラー (ノベルティログ):', error);
+  logPosts = [];
+}
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}.${month}.${day}`;
+}
+---
+
+<Layout
+  title="千葉県船橋市のWeb制作会社｜株式会社ノベルティ採用サイト"
+  description="千葉県船橋市のWeb制作会社、株式会社ノベルティの採用サイトです。Webデザイナー、フロントエンドエンジニア、マーケター、ライターなど様々な職種でスタッフを募集しています。スキルアップしたい、自分らしく働きたい、色々なことに挑戦したい、そんなあなたの応募をお待ちしています。今、ノベルティに飛び込め。"
+>
+  <HeroSection />
+  <ChanceMessageSection />
+  <ChanceSection />
+  <CultureSection items={cultureItems} />
+  <StorySection items={storyItems} />
+  <LogSection posts={logPosts} formatDate={formatDate} />
+  <ImagesSection />
+  <EnvironmentSection items={environmentItems} />
+  <ParallaxImage />
+  <ContactSection />
+</Layout>
