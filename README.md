@@ -12,12 +12,6 @@ npm install
 
 ### 2. 環境変数の設定
 
-`env.example`を参考に環境変数を設定してください：
-
-```bash
-cp env.example .env
-```
-
 `.env`ファイルに以下の値を設定：
 
 ```env
@@ -99,8 +93,6 @@ microCMSの設定でWebhookを追加：
 Cloudflare Pagesで以下の追加環境変数を設定：
 
 - `BUILD_HOOK_URL`: Cloudflare PagesのBuild Hook URL
-- `CLOUDFLARE_ZONE_ID`: CloudflareのZone ID（キャッシュパージ用）
-- `CLOUDFLARE_API_TOKEN`: CloudflareのAPI Token（キャッシュパージ用）
-- `SITE_DOMAIN`: サイトのドメイン名（例: `novelty.pages.dev`）
+- `SITE_DOMAIN`: サイトのドメイン名
 
 これらの設定により、microCMSでコンテンツを更新すると自動的にサイトが再ビルドされ、最新の情報が反映されます。
