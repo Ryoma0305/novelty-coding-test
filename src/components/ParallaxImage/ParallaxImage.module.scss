@@ -11,7 +11,7 @@
   @include mq(md) {
     height: 100vh;
     margin-top: -154px;
-    background-image: url('/public/images/parallax-image-pc.webp');
+    background-image: url('/images/parallax-image-pc.webp');
     // パララックス効果の実装（PC時のみ）
     background-attachment: fixed;
     background-position: center;

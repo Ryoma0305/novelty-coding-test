@@ -248,7 +248,7 @@ export const Header: FC<HeaderProps> = ({ isHome = false }) => {
             </div>
             <div className={styles.mobileNavContent}>
               <div className={styles.mobileLogo}>
-                <img src="/public/images/logo02.webp" alt="Novelty" />
+                <img src="/images/logo02.webp" alt="Novelty" />
               </div>
               <div className={styles.mobileNavContentInner}>
                 <div className={styles.mobileNavLists}>
